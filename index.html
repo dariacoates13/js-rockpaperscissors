@@ -9,28 +9,68 @@
     <script>
       // Your JavaScript goes here!
       function getComputerChoice(computerSelection) {
-        let number = Math.floor(Math.random() * 2);
-        if ((number = 0)) {
+        const random = Math.random() * 3;
+        let number = Math.floor(random);
+
+        if (number === 0) {
           return "rock";
-          if ((number = 1)) {
-            return "paper";
-            if ((number = 2)) {
-              return "scissors";
-            }
-          }
+        }
+        if (number === 1) {
+          return "paper";
+        }
+        if (number === 2) {
+          return "scissors";
         }
       }
 
-      function game() {
-        function playRound(playerSelection, computerSelection) {
-          let win = "You Win!";
-          let lose = "You Lose!";
-          return;
-        }
-        const playerSelection = "rock";
-        const computerSelection = getComputerChoice();
-        console.log(playRound(playerSelection, computerSelection));
+      function getPlayerChoice() {
+        let choice = prompt(
+          "Choose between rock, paper or scissors"
+        ).toLowerCase();
+        // if (choice !== ("rock" || "paper" || "scissors")) {
+        //   choice = prompt(
+        //     "please enter a valid choice; either rock, paper or scissors"
+        //   );
+        // }
+        return choice;
       }
+      function playRound(playerSelection, computerSelection) {
+        if (playerSelection === computerSelection) {
+          return console.log("it's a tie");
+        }
+        if (playerSelection === "rock" && computerSelection === "paper") {
+          return console.log("paper beats rock, computer wins!");
+        }
+        if (playerSelection === "rock" && computerSelection === "scissors") {
+          return console.log("rock beats scissors, player 1 wins!");
+        }
+        if (playerSelection === "paper" && computerSelection === "rock") {
+          return console.log("paper beats rock, player 1 wins!");
+        }
+        if (playerSelection === "paper" && computerSelection === "scissors") {
+          return console.log("scissors beats paper, computer wins!");
+        }
+        if (playerSelection === "scissors" && computerSelection === "rock") {
+          return console.log("rock beats scissors, computer wins!");
+        }
+        if (playerSelection === "scissors" && computerSelection === "paper") {
+          return console.log("scissors beats paper, computer wins!");
+        }
+      }
+
+      function playGame() {
+        const playerSelection = getPlayerChoice();
+        const computerSelection = getComputerChoice();
+        console.log("player:", playerSelection);
+        console.log("computer:", computerSelection);
+        playRound(playerSelection, computerSelection);
+        // console.log(playRound(playerSelection, computerSelection));
+      }
+      playGame();
+      playGame();
+      playGame();
+      playGame();
+      playGame();
     </script>
   </body>
 </html>
